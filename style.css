@@ -1,0 +1,707 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+:root {
+  /* Colors */
+  --color-black: #000000;
+  --color-device-body: #c2d19b;
+  --color-screen-frame: #f3adc5;
+  --color-lcd-bg: #9ca683;
+  --color-lcd-content: #333333;
+  --color-white: #FFFFFF;
+  --color-dark-grey: #2A2A2A;
+  --color-btn-left: #d4de7d;
+  --color-btn-middle: #7cb874;
+  --color-btn-right: #e0d95d;
+  --color-pastel-green: #77DD77; /* Keep for other UI elements */
+  --color-light-pink: #FFB7C5;    /* Keep for other UI elements */
+
+  /* Typography */
+  --font-main: "Pretendard", system-ui, -apple-system, sans-serif;
+  --font-pixel: "Press Start 2P", cursive;
+
+  /* Spacing & Borders */
+  --spacing-base: 16px;
+  --radius-default: 12px;
+  --radius-circle: 999px;
+  --max-width: 1440px;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-black);
+  /* Subtle Grid Background */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 40px 40px;
+  color: var(--color-white);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Layout Blocks */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  padding: 0 var(--spacing-base);
+  margin: 0 auto;
+}
+
+.header {
+  width: 100%;
+  padding: 40px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.header__logo {
+  font-family: var(--font-pixel);
+  font-size: 16px;
+  color: var(--color-white);
+  text-shadow: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.8;
+}
+
+.header__brand, .header__info {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+.header__info {
+  text-align: right;
+}
+
+.nav {
+  width: 100%;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav__list {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav__link {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  padding: 8px 16px;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.nav__link:hover {
+  color: var(--color-white);
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 350px 1fr 350px;
+  gap: 60px;
+  padding: 80px 0;
+  align-items: center; /* Center the device vertically in the grid */
+}
+
+/* Device UI */
+.device {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.device__body {
+  width: 440px;
+  height: 520px;
+  background-color: var(--color-device-body);
+  /* Organic egg shape */
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  box-shadow: 
+    inset 0 15px 30px rgba(255, 255, 255, 0.4), /* Top highlight */
+    inset 0 -15px 30px rgba(0, 0, 0, 0.2),      /* Bottom shadow */
+    10px 20px 40px rgba(0, 0, 0, 0.6),           /* Floor shadow */
+    0 0 2px rgba(0, 0, 0, 0.3);                  /* Edge definition */
+  border: none;
+  background: radial-gradient(circle at 30% 30%, #d8e6b1, var(--color-device-body) 70%);
+}
+
+/* Keychain Hook */
+.device__body::before {
+  content: '';
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 48px;
+  border: 8px solid #c0c0c0;
+  border-radius: 50%;
+  z-index: -1;
+  background: linear-gradient(135deg, #e0e0e0, #909090);
+  box-shadow: 
+    0 4px 8px rgba(0,0,0,0.4),
+    inset 0 2px 4px rgba(255,255,255,0.8),
+    inset 0 -2px 4px rgba(0,0,0,0.3);
+}
+
+.device__chain {
+  position: absolute;
+  top: -110px;
+  left: 50%;
+  width: 120px;
+  height: 160px;
+  border: 5px dotted #a0a0a0;
+  border-radius: 50% 50% 40% 40%;
+  transform: translateX(-100%) rotate(-15deg);
+  z-index: -1;
+  filter: drop-shadow(4px 8px 6px rgba(0,0,0,0.4));
+}
+
+.device__leaf {
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  font-size: 34px;
+  transform: rotate(-40deg);
+  filter: drop-shadow(2px 6px 4px rgba(0,0,0,0.4));
+  /* Swaying animation for natural look */
+  animation: sway 3s infinite alternate ease-in-out;
+}
+
+@keyframes sway {
+  from { transform: rotate(-35deg); }
+  to { transform: rotate(-45deg); }
+}
+
+.device__screen-wrapper {
+  width: 100%;
+  max-width: 280px;
+  height: 240px;
+  background-color: var(--color-screen-frame);
+  padding: 12px;
+  border-radius: 40px;
+  margin-bottom: 30px;
+  box-shadow: 
+    inset 0 4px 8px rgba(0, 0, 0, 0.2),
+    0 2px 4px rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.device__screen {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-lcd-bg);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 6px 12px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.device__screen::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.1) 50%
+  ),
+  linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 3px 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.device__screen::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 45%,
+    rgba(255, 255, 255, 0.1) 48%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 52%,
+    transparent 55%
+  );
+  z-index: 3;
+  pointer-events: none;
+  animation: shine 10s infinite linear;
+}
+
+@keyframes shine {
+  0% { transform: translate(-10%, -10%); }
+  100% { transform: translate(10%, 10%); }
+}
+
+.device__character {
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  /* Large & Clear Super Star (10px unit) */
+  box-shadow: 
+    /* Eyes (Drawn first, wide apart) */
+    -10px -10px var(--color-lcd-bg), -10px 0 var(--color-lcd-bg), -10px 10px var(--color-lcd-bg),
+    10px -10px var(--color-lcd-bg), 10px 0 var(--color-lcd-bg), 10px 10px var(--color-lcd-bg),
+    /* Star Silhouette (Bold Rows) */
+    0 -30px var(--color-lcd-content),
+    -10px -20px var(--color-lcd-content), 0 -20px var(--color-lcd-content), 10px -20px var(--color-lcd-content),
+    -10px -10px var(--color-lcd-content), 0 -10px var(--color-lcd-content), 10px -10px var(--color-lcd-content),
+    -40px 0 var(--color-lcd-content), -30px 0 var(--color-lcd-content), -20px 0 var(--color-lcd-content), -10px 0 var(--color-lcd-content), 0 0 var(--color-lcd-content), 10px 0 var(--color-lcd-content), 20px 0 var(--color-lcd-content), 30px 0 var(--color-lcd-content), 40px 0 var(--color-lcd-content),
+    -30px 10px var(--color-lcd-content), -20px 10px var(--color-lcd-content), -10px 10px var(--color-lcd-content), 0 10px var(--color-lcd-content), 10px 10px var(--color-lcd-content), 20px 10px var(--color-lcd-content), 30px 10px var(--color-lcd-content),
+    -20px 20px var(--color-lcd-content), -10px 20px var(--color-lcd-content), 0 20px var(--color-lcd-content), 10px 20px var(--color-lcd-content), 20px 20px var(--color-lcd-content),
+    -20px 30px var(--color-lcd-content), -10px 30px var(--color-lcd-content), 10px 30px var(--color-lcd-content), 20px 30px var(--color-lcd-content),
+    -20px 40px var(--color-lcd-content), -10px 40px var(--color-lcd-content), 10px 40px var(--color-lcd-content), 20px 40px var(--color-lcd-content);
+  animation: 
+    float 1s infinite alternate ease-in-out,
+    blink 4s infinite;
+  filter: grayscale(0.4) contrast(1.4);
+  opacity: 0.9;
+  position: relative;
+  z-index: 5;
+}
+
+/* Exclamation Mark (!) for Hover */
+.device__character::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background-color: transparent;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  box-shadow: 
+    0 -20px var(--color-lcd-content), 0 -15px var(--color-lcd-content), 0 -10px var(--color-lcd-content),
+    0 0 var(--color-lcd-content);
+}
+
+/* Heart (♥) for Active */
+.device__character::after {
+  content: '';
+  position: absolute;
+  top: -65px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background-color: transparent;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  box-shadow: 
+    -10px -5px var(--color-lcd-content), 10px -5px var(--color-lcd-content),
+    -15px 0 var(--color-lcd-content), -10px 0 var(--color-lcd-content), -5px 0 var(--color-lcd-content), 0 0 var(--color-lcd-content), 5px 0 var(--color-lcd-content), 10px 0 var(--color-lcd-content), 15px 0 var(--color-lcd-content),
+    -10px 5px var(--color-lcd-content), -5px 5px var(--color-lcd-content), 0 5px var(--color-lcd-content), 5px 5px var(--color-lcd-content), 10px 5px var(--color-lcd-content),
+    -5px 10px var(--color-lcd-content), 0 10px var(--color-lcd-content), 5px 10px var(--color-lcd-content),
+    0 15px var(--color-lcd-content);
+}
+
+.device:hover .device__character::before {
+  opacity: 1;
+  animation: popUp 0.3s ease-out forwards;
+}
+
+.device:active .device__character::after {
+  opacity: 1;
+  animation: popUp 0.3s ease-out forwards;
+}
+
+@keyframes popUp {
+  0% { transform: translate(-50%, 10px); opacity: 0; }
+  100% { transform: translate(-50%, 0); opacity: 1; }
+}
+
+/* Character states */
+.device:hover .device__character {
+  animation: 
+    jump 0.4s infinite alternate ease-out,
+    blink 4s infinite;
+}
+
+.device:active .device__character {
+  transform: scale(2);
+}
+
+@keyframes float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10px); }
+}
+
+@keyframes jump {
+  from { transform: translateY(0); }
+  to { transform: translateY(-30px); }
+}
+
+@keyframes blink {
+  0%, 96%, 100% { transform: scaleY(1); }
+  98% { transform: scaleY(0.1); }
+}
+
+
+
+.device__buttons {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  width: 100%;
+}
+
+.device__btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s;
+  box-shadow: 
+    0 4px 0 rgba(0, 0, 0, 0.2),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.device__btn:active {
+  transform: translateY(2px);
+  box-shadow: 
+    0 2px 0 rgba(0, 0, 0, 0.2),
+    inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.device__btn--green { 
+  background: radial-gradient(circle at 30% 30%, #a8d5a2, var(--color-btn-middle)); 
+}
+.device__btn--yellow { 
+  background: radial-gradient(circle at 30% 30%, #eef5ad, var(--color-btn-left)); 
+}
+.device__btn--white { 
+  background: radial-gradient(circle at 30% 30%, #f7f3a8, var(--color-btn-right)); 
+}
+
+
+
+/* Sidebar/Content Area */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Character States inside Screen */
+
+
+.device__screen-text {
+  position: absolute;
+  bottom: 20px;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--color-lcd-content);
+  text-align: center;
+  width: 100%;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+
+/* Card UI */
+.card {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0;
+  padding: 0;
+  color: var(--color-white);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.card__header {
+  background-color: #333;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card__title {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  margin-bottom: 0;
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.9;
+  text-align: left;
+}
+
+.card__close {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--color-white);
+  cursor: pointer;
+  line-height: 1;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.card__close:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.card__content {
+  padding: 24px;
+  flex: 1;
+}
+
+.card__description {
+  font-size: 12px;
+  margin-bottom: 16px;
+  opacity: 0.7;
+  color: var(--color-light-pink);
+}
+
+/* Action Grid */
+.action-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Quest List */
+.quest-list {
+  list-style: none;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quest-list__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quest-list__checkbox {
+  color: var(--color-pastel-green);
+  font-family: var(--font-pixel);
+  font-size: 10px;
+}
+
+.quest-list__checkbox--checked {
+  color: var(--color-light-pink);
+}
+
+/* Growth Record */
+.record-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.record-list__row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+}
+
+.record-list__badges {
+  margin-top: 16px;
+}
+
+.record-list__badge-title {
+  margin-bottom: 8px;
+  font-size: 10px;
+  font-family: var(--font-pixel);
+  opacity: 0.6;
+}
+
+.record-list__badge-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.record-list__badge {
+  font-size: 24px;
+  filter: grayscale(1);
+  transition: filter 0.3s;
+}
+
+.record-list__badge--active {
+  filter: grayscale(0) drop-shadow(0 0 5px var(--color-pastel-green));
+}
+
+/* Status Bar */
+.status-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.status-bar__label {
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+.status-bar__track {
+  height: 8px;
+  background-color: transparent;
+  border: 1px solid var(--color-white);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.status-bar__gauge {
+  height: 100%;
+  background-color: var(--color-white);
+  transition: width 0.3s ease;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Buttons */
+.btn {
+  padding: 12px 24px;
+  border-radius: var(--radius-default);
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn--primary {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.btn--secondary {
+  background-color: transparent;
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.sidebar__btn {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+/* Grid Specifics */
+.main__section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Footer */
+.footer {
+  width: 100%;
+  padding: 40px 0;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.6;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(to top, rgba(119, 221, 119, 0.05), transparent);
+}
+
+/* Responsive */
+@media (max-width: 1280px) {
+  .main {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 40px var(--spacing-base);
+  }
+  .device {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+  .device {
+    grid-column: 1;
+  }
+  .header {
+    padding: 20px 0;
+  }
+  .header__logo {
+    display: none; /* Hide logo on mobile to save space */
+  }
+}
